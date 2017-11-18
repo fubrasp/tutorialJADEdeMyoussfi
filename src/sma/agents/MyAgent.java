@@ -24,6 +24,21 @@ public class MyAgent extends Agent{
                     System.out.println("Contenu du message : "+aclMessage.getContent());
                     System.out.println("Acte de communication : "+ACLMessage.getPerformative(aclMessage.getPerformative()));
                     System.out.println("Langage : "+aclMessage.getLanguage());
+                    System.out.println("Onthologie : "+aclMessage.getOntology());
+
+                    if (aclMessage.getOntology().equals("Cours")){
+                        System.out.println("Onthologie Cours");
+                        ACLMessage response = aclMessage.createReply();
+                        response.setContent("Message bien reçu");
+                        send(response);
+                    }
+
+                    if (aclMessage.getOntology().equals("Exam")){
+                        System.out.println("Exam");
+                        ACLMessage response = aclMessage.createReply();
+                        response.setContent("je vais m'y preparer");
+                        send(response);
+                    }
                 }else{
                     block();
                 }
